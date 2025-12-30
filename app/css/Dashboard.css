@@ -1,0 +1,326 @@
+/* ===============================
+   RESET
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.boards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.board {
+  margin-bottom: 12px;
+}
+
+/* ===============================
+   DASHBOARD
+================================ */
+.dashboard {
+  padding: 24px;
+  min-height: 100vh;
+  background: #EEF2FF;
+  font-family: system-ui, sans-serif;
+}
+.list-card {
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.12);
+}
+.list-card:hover {
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.addBoardBtn {
+  padding: 10px 18px;
+  margin-bottom: 24px;
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.addBoardBtn:hover {
+  opacity: 0.9;
+}
+
+.backBtn {
+  padding: 6px 14px;
+  background: #111;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+/* ===============================
+   ICON BUTTON
+================================ */
+.iconBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.iconBtn:hover,
+.iconBtn:focus {
+  background: rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* ===============================
+   BOARDS
+================================ */
+.boards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.board {
+  padding: 18px;
+  border-radius: 10px;
+  transition: 0.2s;
+}
+
+.board:hover {
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   TOP BAR
+================================ */
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.boardTitleInline {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* ===============================
+   LISTS
+================================ */
+.lists-row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;     /* ✅ horizontal scroll */
+  padding-bottom: 8px;
+}
+
+.lists-row::-webkit-scrollbar {
+  height: 8px;
+}
+
+.lists-row::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.2);
+  border-radius: 4px;
+}
+
+
+.list {
+  position: relative;
+  min-width: 260px;
+  max-width: 320px;
+  border-radius: 10px;
+  padding-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+}
+
+.listHeader {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.listTitle {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ===============================
+   CARDS
+================================ */
+.cardsContainer {
+  padding: 12px;
+}
+
+.card {
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.cardActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+/* ===============================
+   FLOATING BUTTONS
+================================ */
+.addCardFloating {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #0079bf;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.addCardFloating:hover {
+  background: #0068a6;
+}
+
+.addListFloating {
+  min-width: 160px;
+  height: 60px;
+  font-size: 15px;
+  font-weight: 600;
+  border: 2px dashed #aaa;
+  background: #fafafa;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===============================
+   MODAL
+================================ */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modalBox {
+  width: 360px;
+  padding: 24px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+.modalTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* ===============================
+   MODAL INPUT
+================================ */
+.modalBox input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.modalBox input:focus {
+  border-color: #0079bf;
+  outline: none;
+}
+
+/* ===============================
+   MODAL BUTTONS
+================================ */
+.modalBtns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.cancelBtn,
+.saveBtn {
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+.cancelBtn {
+  background: #f1f1f1;
+}
+
+.saveBtn {
+  background: #1976d2;
+  color: #fff;
+}
+
+/* ===============================
+   ERROR
+================================ */
+.modalError {
+  background: #fff0f0;
+  color: #b00020;
+  border: 1px solid #f5c6cb;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+/* ===============================
+   ACCESSIBILITY
+================================ */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 700px) {
+  .list {
+    min-width: 220px;
+  }
+
+  .boardTitleInline {
+    font-size: 18px;
+  }
+}

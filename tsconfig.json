@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-  ],
+, "components/BoardCard.tsx", "components/CardDetailsModal.tsx", "components/BoardsGrid.tsx", "components/BoardView.tsx", "components/Modal.rtsx", "app/dashboard/DashboardClient.tsx", "app/edit-profile/page.tsx", "app/hooks/useLocalStorageState.js", "app/login/page.tsx", "app/profile/page.tsx", "components/Navbar.tsx", "components/Modal.tsx", "hooks/useLocalStorageState.ts", "utils/generatePalette.ts", "app/dashboard/DashboardClient.tsx/sx"  ],
   "exclude": ["node_modules"]
 }
