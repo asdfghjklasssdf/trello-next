@@ -29,7 +29,6 @@ const Modal = forwardRef<HTMLInputElement, ModalProps>(
         >
           <h3 className="modalTitle">{label}</h3>
 
-          {/* Accessible label (screen-reader only) */}
           <label htmlFor={inputId} className="sr-only">
             {label}
           </label>
