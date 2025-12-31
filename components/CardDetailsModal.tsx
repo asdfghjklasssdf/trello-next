@@ -3,9 +3,7 @@ import { useState } from "react";
 
 import "../app/css/popup.css";
 
-//
-// ---------- Types ----------
-//
+
 type Label = {
   id: string;
   name: string;
@@ -49,18 +47,14 @@ export type CardType = {
   completed: boolean;
 };
 
-//
-// ---------- Utils ----------
-//
+
 const getChecklistProgress = (items: ChecklistItem[] = []) => {
   if (!items.length) return 0;
   const done = items.filter(i => i.done).length;
   return Math.round((done / items.length) * 100);
 };
 
-//
-// ---------- Draft builder ----------
-//
+
 const buildDraftFromCard = (card: CardType) => {
   let checklists: Checklist[] = [];
 
@@ -89,9 +83,7 @@ const buildDraftFromCard = (card: CardType) => {
   };
 };
 
-//
-// ---------- COMPONENT ----------
-//
+
 export default function CardDetailsModal({
   card,
   onClose,
@@ -135,9 +127,7 @@ export default function CardDetailsModal({
     return defaults;
   });
 
-  //
-  // ---------- ACTIVITY LOG ----------
-  //
+
   const log = (text: string) => {
     setDraft(d => ({
       ...d,
@@ -145,9 +135,7 @@ export default function CardDetailsModal({
     }));
   };
 
-  //
-  // ---------- LABEL CRUD ----------
-  //
+
   const addLabel = () => {
     if (!newLabelName.trim()) return;
 
@@ -207,9 +195,7 @@ export default function CardDetailsModal({
     });
   };
 
-  //
-  // ---------- CHECKLIST ----------
-  //
+  
   const toggleChecklistByUser = (clId: string) => {
     setDraft(d => {
       const cl = d.checklists.find(c => c.id === clId);
@@ -254,9 +240,7 @@ export default function CardDetailsModal({
     });
   };
 
-  //
-  // ---------- COMMENTS ----------
-  //
+ 
   const addComment = () => {
     if (!commentInput.trim()) return;
 
@@ -272,9 +256,7 @@ export default function CardDetailsModal({
     setCommentInput("");
   };
 
-  //
-  // ---------- ATTACHMENTS ----------
-  //
+
   const addAttachment = (file: File | null) => {
     if (!file) return;
 
@@ -286,9 +268,7 @@ export default function CardDetailsModal({
     log(`Attachment "${file.name}" added`);
   };
 
-  //
-  // ---------- SAVE ----------
-  //
+
   const saveAll = () => {
     onSave({
       ...card,
@@ -300,9 +280,7 @@ export default function CardDetailsModal({
     onClose();
   };
 
-  //
-  // ---------- DELETE CARD CONFIRM ----------
-  //
+
   const confirmDeleteYes = () => {
     if (onDelete) onDelete(card);
     onClose();
@@ -335,10 +313,8 @@ export default function CardDetailsModal({
         <button className="closeBtn" onClick={onClose}>✕</button>
       </div>
 
-      {/* DELETE CARD BUTTON */}
 
 
-      {/* CONFIRM YES/NO */}
       {confirmDelete && (
         <div className="modalOverlay" onClick={() => setConfirmDelete(false)}>
           <div className="cardModal" onClick={e => e.stopPropagation()}>
@@ -361,7 +337,6 @@ export default function CardDetailsModal({
         </div>
       )}
 
-      {/* BODY */}
       <div className="cardModalBody">
 
         <div className="cardLeft">
@@ -391,7 +366,6 @@ export default function CardDetailsModal({
             + Manage labels
           </button>
 
-          {/* LABEL MANAGER MODAL */}
           {labelManagerOpen && (
             <div
               className="labelManagerOverlay"
