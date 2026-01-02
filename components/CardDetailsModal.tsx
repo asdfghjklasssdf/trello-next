@@ -3,7 +3,9 @@ import { useState } from "react";
 
 import "../app/css/popup.css";
 
-
+//
+// ---------- Types ----------
+//
 type Label = {
   id: string;
   name: string;
@@ -47,14 +49,18 @@ export type CardType = {
   completed: boolean;
 };
 
-
+//
+// ---------- Utils ----------
+//
 const getChecklistProgress = (items: ChecklistItem[] = []) => {
   if (!items.length) return 0;
   const done = items.filter(i => i.done).length;
   return Math.round((done / items.length) * 100);
 };
 
-
+//
+// ---------- Draft builder ----------
+//
 const buildDraftFromCard = (card: CardType) => {
   let checklists: Checklist[] = [];
 
@@ -83,7 +89,9 @@ const buildDraftFromCard = (card: CardType) => {
   };
 };
 
-
+//
+// ---------- COMPONENT ----------
+//
 export default function CardDetailsModal({
   card,
   onClose,
@@ -127,7 +135,9 @@ export default function CardDetailsModal({
     return defaults;
   });
 
-
+  //
+  // ---------- ACTIVITY LOG ----------
+  //
   const log = (text: string) => {
     setDraft(d => ({
       ...d,
@@ -135,7 +145,9 @@ export default function CardDetailsModal({
     }));
   };
 
-
+  //
+  // ---------- LABEL CRUD ----------
+  //
   const addLabel = () => {
     if (!newLabelName.trim()) return;
 
@@ -195,7 +207,9 @@ export default function CardDetailsModal({
     });
   };
 
-  
+  //
+  // ---------- CHECKLIST ----------
+  //
   const toggleChecklistByUser = (clId: string) => {
     setDraft(d => {
       const cl = d.checklists.find(c => c.id === clId);
@@ -240,7 +254,9 @@ export default function CardDetailsModal({
     });
   };
 
- 
+  //
+  // ---------- COMMENTS ----------
+  //
   const addComment = () => {
     if (!commentInput.trim()) return;
 
@@ -256,7 +272,9 @@ export default function CardDetailsModal({
     setCommentInput("");
   };
 
-
+  //
+  // ---------- ATTACHMENTS ----------
+  //
   const addAttachment = (file: File | null) => {
     if (!file) return;
 
@@ -268,7 +286,9 @@ export default function CardDetailsModal({
     log(`Attachment "${file.name}" added`);
   };
 
-
+  //
+  // ---------- SAVE ----------
+  //
   const saveAll = () => {
     onSave({
       ...card,
@@ -280,7 +300,9 @@ export default function CardDetailsModal({
     onClose();
   };
 
-
+  //
+  // ---------- DELETE CARD CONFIRM ----------
+  //
   const confirmDeleteYes = () => {
     if (onDelete) onDelete(card);
     onClose();
@@ -313,8 +335,10 @@ export default function CardDetailsModal({
         <button className="closeBtn" onClick={onClose}>✕</button>
       </div>
 
+      {/* DELETE CARD BUTTON */}
 
 
+      {/* CONFIRM YES/NO */}
       {confirmDelete && (
         <div className="modalOverlay" onClick={() => setConfirmDelete(false)}>
           <div className="cardModal" onClick={e => e.stopPropagation()}>
@@ -337,6 +361,7 @@ export default function CardDetailsModal({
         </div>
       )}
 
+      {/* BODY */}
       <div className="cardModalBody">
 
         <div className="cardLeft">
@@ -366,6 +391,7 @@ export default function CardDetailsModal({
             + Manage labels
           </button>
 
+          {/* LABEL MANAGER MODAL */}
           {labelManagerOpen && (
             <div
               className="labelManagerOverlay"
@@ -434,84 +460,120 @@ export default function CardDetailsModal({
             }
           />
 
-          <h4>Checklist</h4>
+    <h4>Checklist</h4>
 
-          {draft.checklists.map(cl => {
-            const progress = getChecklistProgress(cl.items);
+{draft.checklists.map(cl => {
+  const progress = getChecklistProgress(cl.items);
 
-            return (
-              <div key={cl.id} className="checklistBox">
-                <div className="checklistHeader">
-                  <span>{cl.title}</span>
-                  <span>{progress}%</span>
-                </div>
+  return (
+    <div key={cl.id} className="checklistBox">
+      <div className="checklistHeader">
+        <span>{cl.title}</span>
+        <span>{progress}%</span>
+      </div>
 
-                <div
-                  className="progressBar clickable"
-                  onClick={() => toggleChecklistByUser(cl.id)}
-                  title="Click to toggle checklist"
-                >
-                  <div
-                    className="progressFill"
-                    style={{ width: `${progress}%` }}
-                  />
-                </div>
+      <div
+        className="progressBar clickable"
+        onClick={() => toggleChecklistByUser(cl.id)}
+        title="Click to toggle checklist"
+      >
+        <div
+          className="progressFill"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
 
-                {cl.items.map((item, i) => (
-                  <div key={i} className="checkItem">
-                    <input
-                      type="checkbox"
-                      aria-label="Checklist item"
-                      checked={item.done}
-                      onChange={() => toggleChecklistItem(cl.id, i)}
-                    />
-                    <span className={item.done ? "done" : ""}>
-                      {item.text}
-                    </span>
-                  </div>
-                ))}
+      {cl.items.map((item, i) => (
+        <div key={i} className="checkItem">
+          <input
+            type="checkbox"
+            aria-label="Checklist item"
+            checked={item.done}
+            onChange={() => toggleChecklistItem(cl.id, i)}
+          />
+          <span className={item.done ? "done" : ""}>
+            {item.text}
+          </span>
+        </div>
+      ))}
 
-                <input
-                  className="commentInput"
-                  placeholder="Add checklist item…"
-                  aria-label="Add checklist item"
-                  value={pendingChecklistItems[cl.id] || ""}
-                  onChange={e =>
-                    setPendingChecklistItems(p => ({
-                      ...p,
-                      [cl.id]: e.target.value
-                    }))
-                  }
-                  onKeyDown={e => {
-                    if (e.key === "Enter") {
-                      setDraft(d => ({
-                        ...d,
-                        checklists: d.checklists.map(x =>
-                          x.id === cl.id
-                            ? {
-                                ...x,
-                                items: [
-                                  ...x.items,
-                                  {
-                                    text: pendingChecklistItems[cl.id],
-                                    done: false
-                                  }
-                                ]
-                              }
-                            : x
-                        )
-                      }));
-                      log("Checklist item added");
-                      setPendingChecklistItems(p => ({
-                        ...p,
-                        [cl.id]: ""
-                      }));
+      {/* input stays same */}
+      <input
+        className="commentInput"
+        placeholder="Add checklist item…"
+        aria-label="Add checklist item"
+        value={pendingChecklistItems[cl.id] || ""}
+        onChange={e =>
+          setPendingChecklistItems(p => ({
+            ...p,
+            [cl.id]: e.target.value
+          }))
+        }
+        onKeyDown={e => {
+          if (e.key === "Enter") {
+            setDraft(d => ({
+              ...d,
+              checklists: d.checklists.map(x =>
+                x.id === cl.id
+                  ? {
+                      ...x,
+                      items: [
+                        ...x.items,
+                        {
+                          text: pendingChecklistItems[cl.id],
+                          done: false
+                        }
+                      ]
                     }
-                  }}
-                />
-              </div>
-            );
-          })}
+                  : x
+              )
+            }));
+            log("Checklist item added");
+            setPendingChecklistItems(p => ({
+              ...p,
+              [cl.id]: ""
+            }));
+          }
+        }}
+      />
+
+      {/* ➕ minimal change: add button */}
+      <button
+        onClick={() => {
+          if (!pendingChecklistItems[cl.id]) return;
+
+          setDraft(d => ({
+            ...d,
+            checklists: d.checklists.map(x =>
+              x.id === cl.id
+                ? {
+                    ...x,
+                    items: [
+                      ...x.items,
+                      {
+                        text: pendingChecklistItems[cl.id],
+                        done: false
+                      }
+                    ]
+                  }
+                : x
+            )
+          }));
+
+          log("Checklist item added");
+
+          setPendingChecklistItems(p => ({
+            ...p,
+            [cl.id]: ""
+          }));
+        }}
+      >
+        Add
+      </button>
+    </div>
+  );
+})}
+
 
           <h4>Attachments</h4>
 
@@ -527,21 +589,25 @@ export default function CardDetailsModal({
 
           <h4>Comments</h4>
 
-          {draft.comments.map((c, i) => (
-            <div key={i} className="commentItem">
-              {c.text}
-              <div style={{ fontSize: 11, opacity: 0.6 }}>{c.time}</div>
-            </div>
-          ))}
+{draft.comments.map((c, i) => (
+  <div key={i} className="commentItem">
+    {c.text}
+    <div style={{ fontSize: 11, opacity: 0.6 }}>{c.time}</div>
+  </div>
+))}
 
-          <input
-            className="commentInput"
-            placeholder="Write a comment…"
-            aria-label="Add comment"
-            value={commentInput}
-            onChange={e => setCommentInput(e.target.value)}
-            onKeyDown={e => e.key === "Enter" && addComment()}
-          />
+<input
+  className="commentInput"
+  placeholder="Write a comment…"
+  aria-label="Add comment"
+  value={commentInput}
+  onChange={e => setCommentInput(e.target.value)}
+  onKeyDown={e => e.key === "Enter" && addComment()}
+/>
+
+<button onClick={addComment}>Add</button>
+
+         
         </div>
 
         <div className="cardRight">
