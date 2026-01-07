@@ -70,7 +70,6 @@
     display: block;
   }
 
-  /* hide links in top row */
   .nav-links {
     position: absolute;
     top: 100%;
