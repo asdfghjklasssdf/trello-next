@@ -1,6 +1,4 @@
-/* ===============================
-   RESET
-================================ */
+
 * {
   margin: 0;
   padding: 0;
@@ -17,9 +15,7 @@
   margin-bottom: 12px;
 }
 
-/* ===============================
-   DASHBOARD
-================================ */
+
 .dashboard {
   padding: 24px;
   min-height: 100vh;
@@ -34,9 +30,7 @@
   transition: 0.2s ease;
 }
 
-/* ===============================
-   BUTTONS
-================================ */
+
 .addBoardBtn {
   padding: 10px 18px;
   margin-bottom: 24px;
@@ -61,9 +55,7 @@
   cursor: pointer;
 }
 
-/* ===============================
-   ICON BUTTON
-================================ */
+
 .iconBtn {
   display: inline-flex;
   align-items: center;
@@ -82,9 +74,7 @@
   outline: none;
 }
 
-/* ===============================
-   BOARDS
-================================ */
+
 .boards-container {
   display: flex;
   flex-direction: column;
@@ -101,9 +91,7 @@
   transform: translateY(-2px);
 }
 
-/* ===============================
-   TOP BAR
-================================ */
+
 .top-bar {
   display: flex;
   align-items: center;
@@ -117,13 +105,11 @@
   font-weight: 600;
 }
 
-/* ===============================
-   LISTS
-================================ */
+
 .lists-row {
   display: flex;
   gap: 16px;
-  overflow-x: auto;     /* ✅ horizontal scroll */
+  overflow-x: auto;     
   padding-bottom: 8px;
 }
 
@@ -157,9 +143,7 @@
   font-weight: 600;
 }
 
-/* ===============================
-   CARDS
-================================ */
+
 .cardsContainer {
   padding: 12px;
 }
@@ -183,9 +167,7 @@
   margin-top: 6px;
 }
 
-/* ===============================
-   FLOATING BUTTONS
-================================ */
+
 .addCardFloating {
   position: absolute;
   bottom: 12px;
@@ -215,9 +197,7 @@
   cursor: pointer;
 }
 
-/* ===============================
-   MODAL
-================================ */
+
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -243,9 +223,7 @@
   margin-bottom: 16px;
 }
 
-/* ===============================
-   MODAL INPUT
-================================ */
+
 .modalBox input {
   width: 100%;
   padding: 12px;
@@ -260,9 +238,7 @@
   outline: none;
 }
 
-/* ===============================
-   MODAL BUTTONS
-================================ */
+
 .modalBtns {
   display: flex;
   justify-content: flex-end;
@@ -288,9 +264,7 @@
   color: #fff;
 }
 
-/* ===============================
-   ERROR
-================================ */
+
 .modalError {
   background: #fff0f0;
   color: #b00020;
@@ -301,9 +275,7 @@
   margin-bottom: 8px;
 }
 
-/* ===============================
-   ACCESSIBILITY
-================================ */
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -312,9 +284,7 @@
   clip: rect(0,0,0,0);
 }
 
-/* ===============================
-   RESPONSIVE
-================================ */
+
 @media (max-width: 700px) {
   .list {
     min-width: 220px;
