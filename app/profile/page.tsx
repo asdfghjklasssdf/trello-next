@@ -4,9 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState, JSX } from "react";
 import "../css/ProfilePage.css";
 
-/* =======================
-   Types
-======================= */
+
 
 interface User {
   fullName?: string;
@@ -16,9 +14,7 @@ interface User {
   bio?: string;
 }
 
-/* =======================
-   Component
-======================= */
+
 
 export default function ProfilePage(): JSX.Element {
   const router = useRouter();
