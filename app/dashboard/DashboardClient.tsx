@@ -12,9 +12,7 @@ import BoardView from "@/components/BoardView";
 import { generatePalette } from "@/utils/generatePalette";
 import useLocalStorageState from "@/hooks/useLocalStorageState";
 
-/* ================= TYPES ================= */
 
-/* ============== LIGHTWEIGHT SMALL CARD (in list) ============== */
 export interface ColorPalette {
   bg: string;
   border: string;
@@ -189,7 +187,6 @@ const [boards, setBoards] = useLocalStorageState<Board[]>(
     });
   };
 
-  /* ---------- BOARD CRUD ---------- */
 
   const addBoard = (name: string) =>
     setBoards((p) => [
@@ -210,7 +207,6 @@ const [boards, setBoards] = useLocalStorageState<Board[]>(
       setSelectedBoardIndex(null);
     });
 
-  /* ---------- LIST CRUD ---------- */
 
  const addList = (bi: number, name: string) =>
   setBoards(prev => {
@@ -255,7 +251,6 @@ const editList = (bi: number, li: number, name: string) =>
   );
 
 
-  /* ---------- CARD CRUD ---------- */
 
  const addCard = (bi: number, li: number, name: string) =>
   setBoards(prev => {
@@ -323,7 +318,6 @@ const editList = (bi: number, li: number, name: string) =>
     return boards;
   });
 
-  /* ---------- RENDER ---------- */
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -399,13 +393,11 @@ const editList = (bi: number, li: number, name: string) =>
 
    
       {activeCard && (() => {
-        // small card stored in board
         const raw =
           boards[activeCard.boardIndex]
             .lists[activeCard.listIndex]
             .cards[activeCard.cardIndex];
 
-        // convert lightweight Card -> full CardType for modal
         const full: CardType = {
           ...raw,
           description: raw.description ?? "",
