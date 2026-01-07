@@ -5,9 +5,7 @@ import { useRouter } from "next/navigation";
 import "@/app/globals.css";
 import "../css/UserPages.css";
 
-/* =======================
-   Types
-======================= */
+
 
 interface User {
   id: number;
@@ -26,14 +24,11 @@ interface EditForm {
   bio: string;
 }
 
-/* =======================
-   Component
-======================= */
+
 
 export default function EditProfilePage(): JSX.Element {
   const router = useRouter();
 
-  /* ---------- Logged-in user ---------- */
   const [user, setUser] = useState<User | null>(() => {
     try {
       const stored = localStorage.getItem("loggedInUser");
@@ -43,7 +38,6 @@ export default function EditProfilePage(): JSX.Element {
     }
   });
 
-  /* ---------- Editable form ---------- */
   const [form, setForm] = useState<EditForm>(() => {
     try {
       const stored = localStorage.getItem("loggedInUser");
@@ -67,7 +61,6 @@ export default function EditProfilePage(): JSX.Element {
     }
   });
 
-  /* ---------- Not logged in ---------- */
   if (!user) {
     return (
       <div className="profile-container">
@@ -86,9 +79,7 @@ export default function EditProfilePage(): JSX.Element {
     );
   }
 
-  /* =======================
-     Save
-  ======================= */
+
 
   const handleSave = (): void => {
     const users: User[] = JSON.parse(
@@ -131,16 +122,13 @@ export default function EditProfilePage(): JSX.Element {
     router.push("/profile");
   };
 
-  /* =======================
-     Render
-  ======================= */
+
 
   return (
     <div className="profile-container">
       <div className="profile-card">
         <h2>Edit Profile</h2>
 
-        {/* Full Name */}
         <div className="form-group">
           <label htmlFor="fullName">Full Name</label>
           <input
@@ -154,7 +142,6 @@ export default function EditProfilePage(): JSX.Element {
           />
         </div>
 
-        {/* Username */}
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -168,7 +155,6 @@ export default function EditProfilePage(): JSX.Element {
           />
         </div>
 
-        {/* Email */}
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
@@ -183,7 +169,6 @@ export default function EditProfilePage(): JSX.Element {
           />
         </div>
 
-        {/* Phone */}
         <div className="form-group">
           <label htmlFor="phone">Phone</label>
           <input
@@ -197,7 +182,6 @@ export default function EditProfilePage(): JSX.Element {
           />
         </div>
 
-        {/* Bio */}
         <div className="form-group">
           <label htmlFor="bio">Bio</label>
           <textarea
