@@ -1,6 +1,4 @@
-/* ===============================
-   MODAL OVERLAY
-================================ */
+
 .modalOverlay {
   position: fixed;
   inset: 0;
@@ -11,9 +9,7 @@
   z-index: 1000;
 }
 
-/* ===============================
-   MODAL CONTAINER
-================================ */
+
 .cardModal {
   width: 1000px;
   max-height: 90vh;
@@ -25,9 +21,7 @@
   overflow: hidden;
 }
 
-/* ===============================
-   HEADER
-================================ */
+
 .cardModalHeader {
   padding: 18px 24px;
   border-bottom: 1px solid #e5e7eb;
@@ -70,9 +64,7 @@
   cursor: pointer;
 }
 
-/* ===============================
-   BODY LAYOUT
-================================ */
+
 .cardModalBody {
   display: flex;
   gap: 28px;
@@ -91,9 +83,7 @@
   padding: 16px;
 }
 
-/* ===============================
-   SECTION HEADINGS
-================================ */
+
 .cardLeft h4,
 .cardRight h4 {
   margin-top: 20px;
@@ -107,9 +97,7 @@
   margin-top: 0;
 }
 
-/* ===============================
-   INPUTS & TEXTAREA
-================================ */
+
 textarea,
 .commentInput,
 .cardRight input[type="text"],
@@ -127,9 +115,7 @@ textarea {
   resize: vertical;
 }
 
-/* ===============================
-   LABELS
-================================ */
+
 .labelsRow {
   display: flex;
   gap: 8px;
@@ -154,9 +140,7 @@ textarea {
   padding: 0;
 }
 
-/* ===============================
-   CHECKLIST
-================================ */
+
 .checklistBox {
   margin-bottom: 20px;
 }
@@ -202,9 +186,7 @@ textarea {
   cursor: pointer;
 }
 
-/* ===============================
-   COMMENTS & ACTIVITY
-================================ */
+
 .commentItem {
   background: #f3f4f6;
   padding: 8px;
@@ -219,9 +201,7 @@ textarea {
   padding-right: 6px;
 }
 
-/* ===============================
-   FOOTER
-================================ */
+
 .cardModalFooter {
   padding: 16px 24px;
   border-top: 1px solid #e5e7eb;
@@ -255,9 +235,7 @@ textarea {
   background: #1d4ed8;
 }
 
-/* ===============================
-   SCROLLBAR
-================================ */
+
 .cardModalBody::-webkit-scrollbar {
   width: 8px;
 }
@@ -267,9 +245,7 @@ textarea {
   border-radius: 4px;
 }
 
-/* ===============================
-   RESPONSIVE
-================================ */
+
 @media (max-width: 960px) {
   .cardModal {
     width: 95%;
@@ -296,7 +272,6 @@ textarea {
 
   width: 50%;
 }
-/* Overlay */
 .labelManagerOverlay {
   position: fixed;
   inset: 0;
@@ -307,7 +282,6 @@ textarea {
   z-index: 2000;
 }
 
-/* Popup box */
 .labelManager {
   width: 320px;
   background: #ffffff;
@@ -317,7 +291,6 @@ textarea {
   animation: popIn 0.2s ease-out;
 }
 
-/* Header */
 .labelManagerHeader {
   display: flex;
   justify-content: space-between;
@@ -331,7 +304,6 @@ textarea {
   font-weight: 600;
 }
 
-/* Add row */
 .labelAddRow {
   display: flex;
   gap: 6px;
@@ -342,7 +314,6 @@ textarea {
   flex: 1;
 }
 
-/* Label list */
 .labelList {
   display: flex;
   flex-direction: column;
@@ -359,7 +330,6 @@ textarea {
   flex: 1;
 }
 
-/* Buttons */
 .addLabelBtn {
   padding: 0 10px;
   border-radius: 6px;
@@ -375,7 +345,6 @@ textarea {
   cursor: pointer;
 }
 
-/* Animation */
 @keyframes popIn {
   from {
     transform: scale(0.9);
