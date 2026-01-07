@@ -12,7 +12,6 @@ export default function Navbar() {
   return (
 <nav className="navbar">
   <div className="navbar-inner">
-    {/* LOGO */}
     <Link href="/" className="nav-logo">
       <Image
         src="/TRELLO.png"
@@ -25,14 +24,12 @@ export default function Navbar() {
       <span className="logo-text">My Trello App</span>
     </Link>
 
-    {/* DESKTOP + MOBILE LINKS */}
     <div className={`nav-links ${open ? "open" : ""}`}>
       <Link href="/profile" onClick={() => setOpen(false)}>Profile</Link>
       <Link href="/dashboard" onClick={() => setOpen(false)}>Dashboard</Link>
       <Link href="/edit-profile" onClick={() => setOpen(false)}>Edit</Link>
     </div>
 
-    {/* MENU BUTTON */}
     <button
       className="menu-btn"
       onClick={() => setOpen(!open)}
