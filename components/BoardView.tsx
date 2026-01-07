@@ -10,19 +10,15 @@ interface BoardViewProps {
   board: Board;
   boardIndex: number;
 
-  /* navigation */
   onBack: () => void;
 
-  /* board */
   onEditBoard: () => void;
   onDeleteBoard: () => void;
 
-  /* list */
   onEditList: (listIndex: number, value: string) => void;
   onDeleteList: (listIndex: number) => void;
   onAddList: (value: string) => void;
 
-  /* card */
   onAddCard: (listIndex: number, value: string) => void;
   onEditCard: (
     listIndex: number,
@@ -31,7 +27,6 @@ interface BoardViewProps {
   ) => void;
   onDeleteCard: (listIndex: number, cardIndex: number) => void;
 
-  /* modal + card open */
   openModal: (
     label: string,
     action: (value: string) => void,
@@ -59,7 +54,6 @@ export default function BoardView({
 
   return (
     <>
-      {/* ================= TOP BAR ================= */}
       <div className="top-bar">
         <button
           type="button"
@@ -95,7 +89,6 @@ export default function BoardView({
         </div>
       </div>
 
-      {/* ================= LISTS ================= */}
       <Droppable
         droppableId={String(boardIndex)}
         direction="horizontal"
@@ -125,7 +118,6 @@ export default function BoardView({
                       color: list.color?.text
                     }}
                   >
-                    {/* ---------- LIST HEADER ---------- */}
                     <div
                       className="listHeader"
                       {...provided.dragHandleProps}
@@ -161,7 +153,6 @@ export default function BoardView({
                       </div>
                     </div>
 
-                    {/* ---------- CARDS ---------- */}
                     <Droppable
                       droppableId={`${boardIndex}-${listIndex}`}
                       type="CARD"
@@ -247,7 +238,6 @@ export default function BoardView({
                       )}
                     </Droppable>
 
-                    {/* ---------- ADD CARD ---------- */}
                     <button
                       type="button"
                       className="addCardFloating"
@@ -268,7 +258,6 @@ export default function BoardView({
 
             {provided.placeholder}
 
-            {/* ---------- ADD LIST ---------- */}
             <button
               type="button"
               className="addListFloating"
