@@ -5,21 +5,17 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import "../css/login.css";
 
-/* =======================
-   Types
-======================= */
+
 
 interface User {
-  id: string;        // ✅ STABLE
+  id: string;      
   email: string;
   password: string;
   name?: string;
 }
 
 
-/* =======================
-   Component
-======================= */
+
 
 export default function LoginPage(): JSX.Element {
   const router = useRouter();
@@ -51,7 +47,7 @@ export default function LoginPage(): JSX.Element {
     }
 
 localStorage.setItem("loggedInUserId", foundUser.id);
-localStorage.setItem("loggedInUser", JSON.stringify(foundUser)); // optional (for profile UI)
+localStorage.setItem("loggedInUser", JSON.stringify(foundUser)); 
     router.push("/dashboard");
   };
 
