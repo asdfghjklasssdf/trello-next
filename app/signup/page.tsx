@@ -6,9 +6,7 @@ import Link from "next/link";
 import "@/app/globals.css";
 import "../css/Signup.css";
 
-/* =======================
-   Types
-======================= */
+
 
 interface User {
   id: number;
@@ -29,9 +27,6 @@ interface FormErrors {
   form?: string;
 }
 
-/* =======================
-   Component
-======================= */
 
 export default function SignupPage(): JSX.Element {
   const router = useRouter();
@@ -45,9 +40,7 @@ export default function SignupPage(): JSX.Element {
   const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [errors, setErrors] = useState<FormErrors>({});
 
-  /* =======================
-     Validation
-  ======================= */
+  
 
   const validate = (): FormErrors => {
     const e: FormErrors = {};
@@ -63,9 +56,7 @@ export default function SignupPage(): JSX.Element {
     return e;
   };
 
-  /* =======================
-     Submit
-  ======================= */
+
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
@@ -131,7 +122,6 @@ export default function SignupPage(): JSX.Element {
             )}
           </div>
 
-          {/* Username */}
           <div className="form-group">
             <label htmlFor="username">Username</label>
             <input
@@ -149,7 +139,6 @@ export default function SignupPage(): JSX.Element {
             )}
           </div>
 
-          {/* Email */}
           <div className="form-group">
             <label htmlFor="email">Email</label>
             <input
@@ -168,7 +157,6 @@ export default function SignupPage(): JSX.Element {
             )}
           </div>
 
-          {/* Phone */}
           <div className="form-group">
             <label htmlFor="phone">Phone</label>
             <input
@@ -182,7 +170,6 @@ export default function SignupPage(): JSX.Element {
             />
           </div>
 
-          {/* Bio */}
           <div className="form-group">
             <label htmlFor="bio">Bio</label>
             <textarea
@@ -196,7 +183,6 @@ export default function SignupPage(): JSX.Element {
             />
           </div>
 
-          {/* Password */}
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
@@ -215,7 +201,6 @@ export default function SignupPage(): JSX.Element {
             )}
           </div>
 
-          {/* Confirm Password */}
           <div className="form-group">
             <label htmlFor="confirmPassword">Confirm Password</label>
             <input
