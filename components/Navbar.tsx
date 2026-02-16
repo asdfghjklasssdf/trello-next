@@ -28,6 +28,7 @@ export default function Navbar() {
       <Link href="/profile" onClick={() => setOpen(false)}>Profile</Link>
       <Link href="/dashboard" onClick={() => setOpen(false)}>Dashboard</Link>
       <Link href="/edit-profile" onClick={() => setOpen(false)}>Edit</Link>
+      <Link href="/filter" onClick={() => setOpen(false)}>Filter</Link>
     </div>
 
     <button

@@ -509,6 +509,7 @@ export default function CardDetailsModal({
         }}
       />
 
+ (updated)
       <button
         onClick={() => {
           if (!pendingChecklistItems[cl.id]) return;
