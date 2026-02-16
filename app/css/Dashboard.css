@@ -294,3 +294,55 @@
     font-size: 18px;
   }
 }
+/* Filter panel styling */
+.filterPanel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.08);
+}
+
+.filterInput {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  min-width: 220px;
+  font-size: 14px;
+}
+
+.filterInput:focus {
+  outline: none;
+  border-color: #0079bf;
+  box-shadow: 0 0 0 2px rgba(0, 121, 191, 0.15);
+}
+
+/* Styled result cards */
+.cardResultStyled {
+  min-width: 280px;
+  max-width: 320px;
+  padding: 16px;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: 0.2s ease;
+}
+
+.cardResultStyled:hover {
+  transform: translateY(-4px);
+}
+
+.metaText {
+  font-size: 13px;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.cardResultEmpty {
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
